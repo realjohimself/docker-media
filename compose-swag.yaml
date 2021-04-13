@@ -1,0 +1,23 @@
+---
+version: "2.1"
+services:
+  swag:
+    image: ghcr.io/linuxserver/swag
+    container_name: swag
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      - URL=johimself.co.uk
+      - SUBDOMAINS=home,code,plex,radarr,sonarr,sab,request
+      - VALIDATION=http
+      - ONLY_SUBDOMAINS=false #optional
+      - STAGING=false #optional
+    volumes:
+      - /home/pi/docker/swag/config:/config
+    ports:
+      - 442:443
+      - 82:80 #optional
+    restart: unless-stopped
