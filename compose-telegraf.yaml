@@ -1,0 +1,13 @@
+---
+version: "2"
+services:
+  telegraf:
+    image: telegraf
+    container_name: telegraf
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - /home/pi/docker/telegraf/config/telegraf-pi401.conf:/etc/telegraf/telegraf.conf:ro

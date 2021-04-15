@@ -1,0 +1,16 @@
+---
+version: "2"
+services:
+  tautulli:
+    image: ghcr.io/linuxserver/tautulli
+    container_name: tautulli
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - /home/pi/docker/tautulli/config:/config
+      - /home/pi/docker/tautulli/logs:/logs
+    ports:
+      - 8181:8181

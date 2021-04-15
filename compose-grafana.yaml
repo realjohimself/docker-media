@@ -1,0 +1,27 @@
+---
+version: "2"
+services:
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - /home/pi/docker/grafana/config:/var/lib/grafana
+    ports:
+      - 3000:3000
+  influxdb:
+    image: influxdb
+    container_name: influxdb
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - /home/pi/docker/influxdb/config:/var/lib/influxdb
+    ports:
+      - 8086:8086
